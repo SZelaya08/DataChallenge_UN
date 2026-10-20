@@ -1,0 +1,16 @@
+indicador,valor
+total_episodios,801440
+fecha_minima,2023-01-01 00:21:55
+fecha_maxima,2026-07-17 18:57:09
+nulos_totales,0
+duraciones_negativas,0
+duraciones_cero,378697
+duraciones_positivas,422743
+episodios_mas_24h,78126
+episodios_mas_48h,55188
+episodios_mas_7_dias,15153
+episode_id_duplicados,0
+episode_end_anterior_a_start,0
+duracion_coherente_con_fechas,800931
+duracion_incoherente_con_fechas,509
+proporcion_duracion_positiva,0.5274792872828908

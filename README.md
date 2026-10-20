@@ -8,8 +8,9 @@ botella y proponer acciones factibles para reducir demoras.
 **Equipo:** Kryss Taliana Caro Támara · Santiago José Faroy Zelaya Ríos · Leia Valentina Patiño Lara
 
 > **Confidencialidad.** Este repositorio **no contiene datos del hospital**:
-> ni filas de pacientes, ni extractos, ni el caché de Power BI, ni resultados
-> numéricos de los modelos. Los términos del reto (§6 y §13) prohíben subirlos.
+> ni filas de pacientes, ni extractos, ni el caché de Power BI. Solo incluye
+> resultados agregados (conteos, percentiles, figuras) revisados por el equipo. Los términos del reto (§6 y §13)
+> prohíben subir datos del hospital.
 > Revisa la sección *Antes de cada commit*.
 
 ## Estructura
@@ -22,11 +23,13 @@ botella y proponer acciones factibles para reducir demoras.
 | `HUN_Insignia_tema_color.json` | Tema de colores del dashboard (Diseño → Importar tema). |
 | `modelos/01_prediccion_demanda.ipynb` | Modelo 1: predicción de demanda horaria de urgencias. |
 | `modelos/02_prediccion_duracion.ipynb` | Modelo 2: duración de los episodios de urgencias. |
+| `resultados/duracion/` | Diagnóstico del modelo 2: reporte, estadísticas agregadas y figuras (sin filas de pacientes). |
 | `herramientas/limpiar_notebook.py` | Filtro que quita las salidas de los notebooks al hacer commit. |
 | `requirements.txt` | Dependencias de Python. |
 
-Carpetas que existen en cada computador pero **no** se suben: `resultados/`,
-`modelos/resultados/`, `.venv/` y cualquier `.csv`, `.joblib` o `.pbix`.
+Lo que **no** se sube: `modelos/resultados/`, `.venv/` y cualquier `.csv`,
+`.joblib` o `.pbix` fuera de `resultados/`. En `resultados/` solo van
+resultados agregados ya revisados; todo archivo nuevo ahí se revisa antes del commit.
 
 ## Cómo reproducirlo
 
@@ -42,7 +45,7 @@ Carpetas que existen en cada computador pero **no** se suben: `resultados/`,
    ```
 3. **Notebooks.** Ejecuta en orden `01_prediccion_demanda` y luego
    `02_prediccion_duracion`. Las salidas se guardan en `modelos/resultados/`
-   y `resultados/`, que quedan solo en tu computador.
+   (solo local) y `resultados/` (agregados, se suben tras revisarlos).
 4. **Dashboard.** Abre `Hun_Insignia.pbip` en Power BI Desktop y pulsa
    **Inicio → Actualizar**. Se conecta a `localhost:5432/hun_analitica`
    en modo Importar.

@@ -19,12 +19,16 @@
 datos/
 data/
 
-# --- Salidas de modelos y resultados (pueden revelar datos agregados) ---
+# --- Salidas de modelos ---
 *.joblib
 *.pkl
 *.pickle
 modelos/resultados/
-resultados/
+
+# --- Excepción: resultados AGREGADOS (sin filas ni identificadores de pacientes) ---
+# Revisados el 20 oct 2026: estadísticas, resúmenes mensuales, calidad y figuras.
+# Cualquier archivo nuevo aquí debe revisarse antes del commit.
+!resultados/**/*.csv
 
 # --- Power BI: caché con los datos importados y ajustes locales ---
 **/.pbi/cache.abf
