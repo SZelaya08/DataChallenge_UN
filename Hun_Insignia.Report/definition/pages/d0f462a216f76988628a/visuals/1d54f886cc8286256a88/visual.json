@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "1d54f886cc8286256a88",
+  "position": {
+    "x": 30,
+    "y": 82,
+    "z": 4000,
+    "height": 50,
+    "width": 1820,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Ojo con la calidad del registro: casi la mitad de los episodios tiene duración cero, por eso la mediana de la página 1 es tan baja (2,5 min) mientras el promedio supera los 800 min. Antes de usar la duración en el modelo hay que decidir cómo tratar esos casos. Las barras muestran qué % de episodios tiene cada tipo de detalle o supera 24/48 h.",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

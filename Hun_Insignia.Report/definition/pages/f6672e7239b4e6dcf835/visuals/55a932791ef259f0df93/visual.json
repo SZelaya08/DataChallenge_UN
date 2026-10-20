@@ -1,0 +1,111 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "55a932791ef259f0df93",
+  "position": {
+    "x": 30,
+    "y": 585,
+    "z": 1000,
+    "height": 465,
+    "width": 920,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias demanda_horaria"
+                    }
+                  },
+                  "Property": "dia_semana"
+                }
+              },
+              "queryRef": "urgencias demanda_horaria.dia_semana",
+              "nativeQueryRef": "dia_semana",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias demanda_horaria"
+                    }
+                  },
+                  "Property": "Demanda promedio por hora"
+                }
+              },
+              "queryRef": "urgencias demanda_horaria.Demanda promedio por hora",
+              "nativeQueryRef": "Demanda promedio por hora"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias demanda_horaria"
+                    }
+                  },
+                  "Property": "Demanda P90 por hora"
+                }
+              },
+              "queryRef": "urgencias demanda_horaria.Demanda P90 por hora",
+              "nativeQueryRef": "Demanda P90 por hora"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "urgencias demanda_horaria"
+                  }
+                },
+                "Property": "Demanda promedio por hora"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'¿Qué días de la semana tienen más demanda?'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

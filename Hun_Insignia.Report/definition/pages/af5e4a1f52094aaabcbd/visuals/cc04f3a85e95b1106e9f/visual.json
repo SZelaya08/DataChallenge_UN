@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "cc04f3a85e95b1106e9f",
+  "position": {
+    "x": 30,
+    "y": 82,
+    "z": 3000,
+    "height": 50,
+    "width": 1820,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Qué muestra: cuántos episodios de urgencias hay y cuánto duran. La duración es el tiempo documentado del episodio (permanencia), no el tiempo de espera. P90 = 9 de cada 10 episodios duran menos que ese valor. La caída de los últimos meses puede deberse a datos aún incompletos, no a una baja real.",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

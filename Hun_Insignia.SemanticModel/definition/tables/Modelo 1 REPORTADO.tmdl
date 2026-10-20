@@ -1,0 +1,41 @@
+table 'Modelo 1 REPORTADO'
+	lineageTag: aba3e9d4-8d19-4cdf-87e1-46f4749cdf53
+
+	measure 'MAE (exp. A)' = 11.868747232066116
+		formatString: 0.000000000000000
+		lineageTag: 8467abe6-e1fa-4e7d-ae58-91058834fd9c
+
+	measure 'RMSE (exp. A)' = 14.646996991789138
+		formatString: 0.000000000000000
+		lineageTag: 111dab88-5a4b-4636-b236-05cf61a92a90
+
+	measure 'R2 (exp. A)' = 0.806
+		formatString: 0.000
+		lineageTag: 462d9c2c-afbd-4ed4-b789-daa1e13ac925
+
+	measure 'MAE train (exp. B)' = 5.404987360961681
+		formatString: 0.000000000000000
+		lineageTag: 6be34701-c502-4966-b6ce-7a06c099815e
+
+	measure 'MAE test (exp. B)' = 7.939029579077689
+		formatString: 0.000000000000000
+		lineageTag: 9a17f872-f19e-49c7-801f-cd10be086452
+
+	measure 'Importancia reportada' = SUM('Modelo 1 REPORTADO'[importancia])
+		formatString: 0.000000
+		lineageTag: 02f5d095-029c-4b65-b03d-6a77bf808e04
+
+	column variable
+		lineageTag: c9c2cd44-3cae-43ef-8561-1f6fbf641352
+		summarizeBy: none
+		sourceColumn: [variable]
+
+	column importancia
+		lineageTag: 1b0621b7-395e-4d5e-b69c-ff4501f7dc99
+		summarizeBy: sum
+		sourceColumn: [importancia]
+
+	partition 'Modelo 1 REPORTADO' = calculated
+		mode: import
+		source = DATATABLE("variable", STRING, "importancia", DOUBLE, {{"occupancy_pct", 10.991279}, {"patients_waiting", 9.919452}, {"triage_level", 6.460815}, {"doctors_on_duty", 0.413115}, {"arrivals_last_60min", 0.376393}, {"nurses_on_duty", 0.105482}, {"shift", 0.082802}, {"arrival_hour", 0.061664}, {"age", 0.049807}, {"arrival_mode", 0.023096}, {"is_weekend", -0.002167}, {"day_of_week", -0.009893}})
+

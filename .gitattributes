@@ -1,0 +1,9 @@
+# Saltos de línea consistentes entre Windows y otros sistemas
+* text=auto eol=crlf
+
+# Los notebooks se suben SIN salidas (tablas, prints, gráficos), porque
+# pueden mostrar filas de la base del hospital. Ver README > Notebooks.
+*.ipynb filter=limpiar-notebook
+
+*.png binary
+*.jpg binary

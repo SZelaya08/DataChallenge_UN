@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "782c476414881f46fcca",
+  "position": {
+    "x": 30,
+    "y": 140,
+    "z": 0,
+    "height": 160,
+    "width": 1860,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "Episodios"
+                }
+              },
+              "queryRef": "urgencias episodios.Episodios",
+              "nativeQueryRef": "Episodios"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "Pacientes"
+                }
+              },
+              "queryRef": "urgencias episodios.Pacientes",
+              "nativeQueryRef": "Pacientes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "Duración mediana (min)"
+                }
+              },
+              "queryRef": "urgencias episodios.Duración mediana (min)",
+              "nativeQueryRef": "Duración mediana (min)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "Duración P90 (min)"
+                }
+              },
+              "queryRef": "urgencias episodios.Duración P90 (min)",
+              "nativeQueryRef": "Duración P90 (min)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "% más de 24 h"
+                }
+              },
+              "queryRef": "urgencias episodios.% más de 24 h",
+              "nativeQueryRef": "% más de 24 h"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "% más de 48 h"
+                }
+              },
+              "queryRef": "urgencias episodios.% más de 48 h",
+              "nativeQueryRef": "% más de 48 h"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "urgencias episodios"
+                  }
+                },
+                "Property": "Episodios"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

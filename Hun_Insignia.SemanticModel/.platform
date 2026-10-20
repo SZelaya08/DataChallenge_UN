@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Hun_Insignia"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "091b4679-dc1f-41f8-b1a2-73502d35de4c"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "b9622aefd108929938ca",
+  "position": {
+    "x": 30,
+    "y": 95,
+    "z": 0,
+    "height": 200,
+    "width": 1860,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Modelo 1 REPORTADO"
+                    }
+                  },
+                  "Property": "MAE (exp. A)"
+                }
+              },
+              "queryRef": "Modelo 1 REPORTADO.MAE (exp. A)",
+              "nativeQueryRef": "MAE (exp. A)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Modelo 1 REPORTADO"
+                    }
+                  },
+                  "Property": "RMSE (exp. A)"
+                }
+              },
+              "queryRef": "Modelo 1 REPORTADO.RMSE (exp. A)",
+              "nativeQueryRef": "RMSE (exp. A)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Modelo 1 REPORTADO"
+                    }
+                  },
+                  "Property": "R2 (exp. A)"
+                }
+              },
+              "queryRef": "Modelo 1 REPORTADO.R2 (exp. A)",
+              "nativeQueryRef": "R2 (exp. A)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Modelo 1 REPORTADO"
+                    }
+                  },
+                  "Property": "MAE train (exp. B)"
+                }
+              },
+              "queryRef": "Modelo 1 REPORTADO.MAE train (exp. B)",
+              "nativeQueryRef": "MAE train (exp. B)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Modelo 1 REPORTADO"
+                    }
+                  },
+                  "Property": "MAE test (exp. B)"
+                }
+              },
+              "queryRef": "Modelo 1 REPORTADO.MAE test (exp. B)",
+              "nativeQueryRef": "MAE test (exp. B)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Modelo 1 REPORTADO"
+                  }
+                },
+                "Property": "MAE (exp. A)"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

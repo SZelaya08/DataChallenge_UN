@@ -1,0 +1,270 @@
+table 'urgencias episodios'
+	lineageTag: 315bd41c-e6f9-49ef-8778-bcd8172968c3
+
+	measure Episodios = COUNTROWS('urgencias episodios')
+		formatString: #,0
+		displayFolder: Dashboard provisional
+		lineageTag: 811a99f6-49b3-4402-adec-028721edf575
+
+	measure Pacientes = DISTINCTCOUNT('urgencias episodios'[person_id])
+		formatString: #,0
+		displayFolder: Dashboard provisional
+		lineageTag: 819a343b-261c-4c5b-ad0f-a3afc6980ffb
+
+	measure Visitas = DISTINCTCOUNT('urgencias episodios'[visit_occurrence_id])
+		formatString: #,0
+		displayFolder: Dashboard provisional
+		lineageTag: c0cbd0d6-5d09-4bfe-8a34-55916de948f3
+
+	measure 'Episodios por paciente' = DIVIDE([Episodios], [Pacientes])
+		formatString: 0.000
+		displayFolder: Dashboard provisional
+		lineageTag: 51282391-2942-4aac-9f6c-db3d149ffd6a
+
+	measure 'Duración mediana (min)' = MEDIAN('urgencias episodios'[documented_duration_min])
+		formatString: #,0.0
+		displayFolder: Dashboard provisional
+		lineageTag: 476fb57f-3340-4242-8880-aa3ee70070d9
+
+	measure 'Duración P90 (min)' = PERCENTILEX.INC(FILTER('urgencias episodios', NOT ISBLANK('urgencias episodios'[documented_duration_min])), 'urgencias episodios'[documented_duration_min], 0.9)
+		formatString: #,0.0
+		displayFolder: Dashboard provisional
+		lineageTag: f615ff59-0093-4c70-8f4b-35cdf8a1d3a9
+
+	measure 'Duración promedio (min)' = AVERAGE('urgencias episodios'[documented_duration_min])
+		formatString: #,0.0
+		displayFolder: Dashboard provisional
+		lineageTag: 5bd96a6e-2c95-4114-a73c-18d85fcff493
+
+	measure '% más de 24 h' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[is_over_24h] = TRUE()), [Episodios])
+		formatString: 0.00%
+		displayFolder: Dashboard provisional
+		lineageTag: 8c642cab-95a6-4615-9fa4-14c1283288a9
+
+	measure '% más de 48 h' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[is_over_48h] = TRUE()), [Episodios])
+		formatString: 0.00%
+		displayFolder: Dashboard provisional
+		lineageTag: 7c0b1f3e-6d74-4632-a36e-1aa61002b3df
+
+	measure '% duración cero' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[is_zero_duration] = TRUE()), [Episodios])
+		formatString: 0.00%
+		displayFolder: Dashboard provisional
+		lineageTag: 7a98cb21-ff65-4958-8e75-1d21c23d38ef
+
+	measure '% con detalle de urgencias' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[has_emergency_detail] = TRUE()), [Episodios])
+		formatString: 0.00%
+		displayFolder: Dashboard provisional
+		lineageTag: 4e803db2-8be7-4dfe-9cf6-b55b2511b38e
+
+	measure '% con detalle diagnóstico' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[has_diagnostic_detail] = TRUE()), [Episodios])
+		formatString: 0.00%
+		displayFolder: Dashboard provisional
+		lineageTag: 5e422b24-f8e1-47fa-9228-e88f8bde24e5
+
+	measure '% con hospitalización' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[has_inpatient_detail] = TRUE()), [Episodios])
+		formatString: 0.00%
+		displayFolder: Dashboard provisional
+		lineageTag: 0bf5e43b-eabe-48dd-aaf4-1094b700a6d5
+
+	measure '% con rehabilitación' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[has_rehabilitation_detail] = TRUE()), [Episodios])
+		formatString: 0.00%
+		displayFolder: Dashboard provisional
+		lineageTag: 7dbb6544-4bb6-4407-bb7d-471c8ade7476
+
+	measure 'Detalles por episodio' = DIVIDE(SUM('urgencias episodios'[detail_count]), [Episodios])
+		formatString: 0.000
+		displayFolder: Dashboard provisional
+		lineageTag: c7089dc3-8507-4d6b-a447-8fcba14dd930
+
+	column episode_id
+		dataType: string
+		lineageTag: 13518189-24ea-4fc4-bbd9-12eb46a4c14b
+		summarizeBy: none
+		sourceColumn: episode_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column visit_occurrence_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ef82b078-7c51-4acf-9fdb-fad292883f2b
+		summarizeBy: sum
+		sourceColumn: visit_occurrence_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column person_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c0f3009-67d9-40dd-bddb-912d75099d09
+		summarizeBy: sum
+		sourceColumn: person_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column episode_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 69a75f41-ff43-47d7-9501-a3d374e2e093
+		summarizeBy: sum
+		sourceColumn: episode_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column episode_start
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 578449dc-6445-4c29-9117-1460e1ac2501
+		summarizeBy: none
+		sourceColumn: episode_start
+
+		variation Variation
+			isDefault
+			relationship: c3036b00-d704-4dd5-905d-d3fdf3fbcb8d
+			defaultHierarchy: LocalDateTable_bbbdecec-c341-434f-8213-8223f4a94b49.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column episode_end
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0d970b7c-e6af-4faa-a616-bfdaa0d83d0e
+		summarizeBy: none
+		sourceColumn: episode_end
+
+		variation Variation
+			isDefault
+			relationship: fc170b1c-78a6-4aac-be7a-eab9084e21dd
+			defaultHierarchy: LocalDateTable_ef7a436c-c3ef-4e37-b294-670422479322.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column documented_duration_min
+		dataType: double
+		lineageTag: 4fc9b86e-edf0-430a-b76f-487e716e7782
+		summarizeBy: sum
+		sourceColumn: documented_duration_min
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column detail_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 8155b8dc-0593-4949-825c-c1d99546832b
+		summarizeBy: sum
+		sourceColumn: detail_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column positive_detail_count
+		dataType: int64
+		formatString: 0
+		lineageTag: a9ae08b7-0465-4a8c-90bb-5c583fb15c35
+		summarizeBy: sum
+		sourceColumn: positive_detail_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column zero_detail_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 83d6fae3-782f-4094-b484-541946cf87c2
+		summarizeBy: sum
+		sourceColumn: zero_detail_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_emergency_detail
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b1b81f68-852b-4057-8674-3749c3742ad4
+		summarizeBy: none
+		sourceColumn: has_emergency_detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_diagnostic_detail
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 140b47ef-b100-44d7-a857-aa27a86cb7ce
+		summarizeBy: none
+		sourceColumn: has_diagnostic_detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_inpatient_detail
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ee576e2f-e0a8-4f1c-ab89-e3fef93cfaa1
+		summarizeBy: none
+		sourceColumn: has_inpatient_detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_rehabilitation_detail
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4a5e3f52-5137-4756-bab8-78b2d4eaa73d
+		summarizeBy: none
+		sourceColumn: has_rehabilitation_detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_positive_duration
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7ae1c769-efe5-4d4f-9c58-01ae5b93c884
+		summarizeBy: none
+		sourceColumn: has_positive_duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_zero_duration
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 921e77ee-e2d1-4665-b550-a5bc6a36655b
+		summarizeBy: none
+		sourceColumn: is_zero_duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_over_24h
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 54c1d7c2-4f3a-4e57-ab86-f09042c665a8
+		summarizeBy: none
+		sourceColumn: is_over_24h
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_over_48h
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c7bed920-aff6-453f-bf8d-2ff6665e5a40
+		summarizeBy: none
+		sourceColumn: is_over_48h
+
+		annotation SummarizationSetBy = Automatic
+
+	column episode_gap_threshold_h
+		dataType: int64
+		formatString: 0
+		lineageTag: d4ccbfb8-36e2-47e2-b302-2a71c0d90736
+		summarizeBy: sum
+		sourceColumn: episode_gap_threshold_h
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'urgencias episodios' = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost:5432", "hun_analitica"),
+				    urgencias_episodios = Origen{[Schema="urgencias",Item="episodios"]}[Data]
+				in
+				    urgencias_episodios
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,15 @@
+relationship cab7ecbb-107f-43bc-8e28-8d01900674ca
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'urgencias demanda_horaria'.fecha_hora
+	toColumn: LocalDateTable_2a2387c6-0fb4-412b-8f4f-b6e06bf62bc6.Date
+
+relationship c3036b00-d704-4dd5-905d-d3fdf3fbcb8d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'urgencias episodios'.episode_start
+	toColumn: LocalDateTable_bbbdecec-c341-434f-8213-8223f4a94b49.Date
+
+relationship fc170b1c-78a6-4aac-be7a-eab9084e21dd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'urgencias episodios'.episode_end
+	toColumn: LocalDateTable_ef7a436c-c3ef-4e37-b294-670422479322.Date
+

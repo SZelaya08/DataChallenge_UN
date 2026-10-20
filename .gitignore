@@ -1,0 +1,53 @@
+# =====================================================================
+# Data Challenge HUN 2026 — equipo Insignia
+# Regla del reto (§6 y §13): el repositorio NO puede llevar datos del
+# hospital ni información confidencial. Ante la duda, NO se sube.
+# =====================================================================
+
+# --- Datos del hospital (filas, extractos, respaldos) ---
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.parquet
+*.feather
+*.sqlite
+*.db
+*.sql.gz
+*.dump
+*.backup
+datos/
+data/
+
+# --- Salidas de modelos y resultados (pueden revelar datos agregados) ---
+*.joblib
+*.pkl
+*.pickle
+modelos/resultados/
+resultados/
+
+# --- Power BI: caché con los datos importados y ajustes locales ---
+**/.pbi/cache.abf
+**/.pbi/localSettings.json
+*.pbix
+
+# --- Notebooks de respaldo ---
+*.backup.ipynb
+.ipynb_checkpoints/
+
+# --- Entorno de Python ---
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# --- Credenciales y configuración local ---
+.env
+.env.*
+*.pem
+*.key
+
+# --- Sistema ---
+.DS_Store
+Thumbs.db
+desktop.ini

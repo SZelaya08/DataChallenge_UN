@@ -1,0 +1,121 @@
+createOrReplace
+
+	ref table 'urgencias episodios'
+
+		measure Episodios = COUNTROWS('urgencias episodios')
+			formatString: #,0
+			displayFolder: Dashboard provisional
+
+		measure Pacientes = DISTINCTCOUNT('urgencias episodios'[person_id])
+			formatString: #,0
+			displayFolder: Dashboard provisional
+
+		measure Visitas = DISTINCTCOUNT('urgencias episodios'[visit_occurrence_id])
+			formatString: #,0
+			displayFolder: Dashboard provisional
+
+		measure 'Episodios por paciente' = DIVIDE([Episodios], [Pacientes])
+			formatString: 0.000
+			displayFolder: Dashboard provisional
+
+		measure 'Duración mediana (min)' = MEDIAN('urgencias episodios'[documented_duration_min])
+			formatString: #,0.0
+			displayFolder: Dashboard provisional
+
+		measure 'Duración P90 (min)' = PERCENTILEX.INC(FILTER('urgencias episodios', NOT ISBLANK('urgencias episodios'[documented_duration_min])), 'urgencias episodios'[documented_duration_min], 0.9)
+			formatString: #,0.0
+			displayFolder: Dashboard provisional
+
+		measure 'Duración promedio (min)' = AVERAGE('urgencias episodios'[documented_duration_min])
+			formatString: #,0.0
+			displayFolder: Dashboard provisional
+
+		measure '% más de 24 h' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[is_over_24h] = TRUE()), [Episodios])
+			formatString: 0.00%
+			displayFolder: Dashboard provisional
+
+		measure '% más de 48 h' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[is_over_48h] = TRUE()), [Episodios])
+			formatString: 0.00%
+			displayFolder: Dashboard provisional
+
+		measure '% duración cero' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[is_zero_duration] = TRUE()), [Episodios])
+			formatString: 0.00%
+			displayFolder: Dashboard provisional
+
+		measure '% con detalle de urgencias' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[has_emergency_detail] = TRUE()), [Episodios])
+			formatString: 0.00%
+			displayFolder: Dashboard provisional
+
+		measure '% con detalle diagnóstico' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[has_diagnostic_detail] = TRUE()), [Episodios])
+			formatString: 0.00%
+			displayFolder: Dashboard provisional
+
+		measure '% con hospitalización' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[has_inpatient_detail] = TRUE()), [Episodios])
+			formatString: 0.00%
+			displayFolder: Dashboard provisional
+
+		measure '% con rehabilitación' = DIVIDE(CALCULATE([Episodios], 'urgencias episodios'[has_rehabilitation_detail] = TRUE()), [Episodios])
+			formatString: 0.00%
+			displayFolder: Dashboard provisional
+
+		measure 'Detalles por episodio' = DIVIDE(SUM('urgencias episodios'[detail_count]), [Episodios])
+			formatString: 0.000
+			displayFolder: Dashboard provisional
+
+	ref table 'urgencias demanda_horaria'
+
+		measure 'Demanda total' = SUM('urgencias demanda_horaria'[demanda])
+			formatString: #,0
+			displayFolder: Dashboard provisional
+
+		measure 'Demanda promedio por hora' = AVERAGE('urgencias demanda_horaria'[demanda])
+			formatString: 0.000
+			displayFolder: Dashboard provisional
+
+		measure 'Demanda P90 por hora' = PERCENTILEX.INC('urgencias demanda_horaria', 'urgencias demanda_horaria'[demanda], 0.9)
+			formatString: 0.000
+			displayFolder: Dashboard provisional
+
+		measure 'Demanda máxima por hora' = MAX('urgencias demanda_horaria'[demanda])
+			formatString: #,0
+			displayFolder: Dashboard provisional
+
+		measure 'Horas observadas' = COUNTROWS('urgencias demanda_horaria')
+			formatString: #,0
+			displayFolder: Dashboard provisional
+
+	table 'Modelo 1 REPORTADO'
+
+		measure 'MAE (exp. A)' = 11.868747232066116
+			formatString: 0.000000000000000
+
+		measure 'RMSE (exp. A)' = 14.646996991789138
+			formatString: 0.000000000000000
+
+		measure 'R2 (exp. A)' = 0.806
+			formatString: 0.000
+
+		measure 'MAE train (exp. B)' = 5.404987360961681
+			formatString: 0.000000000000000
+
+		measure 'MAE test (exp. B)' = 7.939029579077689
+			formatString: 0.000000000000000
+
+		measure 'Importancia reportada' = SUM('Modelo 1 REPORTADO'[importancia])
+			formatString: 0.000000
+
+		column variable
+			dataType: string
+			isDataTypeInferred
+			summarizeBy: none
+			sourceColumn: [variable]
+
+		column importancia
+			dataType: double
+			isDataTypeInferred
+			summarizeBy: sum
+			sourceColumn: [importancia]
+
+		partition 'Modelo 1 REPORTADO' = calculated
+			mode: import
+			source = DATATABLE("variable", STRING, "importancia", DOUBLE, {{"occupancy_pct", 10.991279}, {"patients_waiting", 9.919452}, {"triage_level", 6.460815}, {"doctors_on_duty", 0.413115}, {"arrivals_last_60min", 0.376393}, {"nurses_on_duty", 0.105482}, {"shift", 0.082802}, {"arrival_hour", 0.061664}, {"age", 0.049807}, {"arrival_mode", 0.023096}, {"is_weekend", -0.002167}, {"day_of_week", -0.009893}})

@@ -1,0 +1,334 @@
+createOrReplace
+
+	table 'localhost: postgres'
+		lineageTag: 78f06582-0a7d-427d-b8db-4f651e5cac7e
+
+		column Name
+			dataType: string
+			lineageTag: 052406aa-b10d-4df2-9e43-145e199ce130
+			summarizeBy: none
+			sourceColumn: Name
+
+			annotation SummarizationSetBy = Automatic
+
+		column Data
+			dataType: string
+			lineageTag: 00d14bc5-2d4f-4e3d-8219-74aa8298a81e
+			summarizeBy: none
+			sourceColumn: Data
+
+			annotation SummarizationSetBy = Automatic
+
+		column Schema
+			dataType: string
+			lineageTag: 00b2f7d9-43f3-4fb1-81e1-927cc84d4ca7
+			summarizeBy: none
+			sourceColumn: Schema
+
+			annotation SummarizationSetBy = Automatic
+
+		column Item
+			dataType: string
+			lineageTag: c3a0e6a7-7be1-439c-9e16-4e0f0fd42df5
+			summarizeBy: none
+			sourceColumn: Item
+
+			annotation SummarizationSetBy = Automatic
+
+		column Kind
+			dataType: string
+			lineageTag: c620a3f8-213a-4868-b6f9-2212e8e11f73
+			summarizeBy: none
+			sourceColumn: Kind
+
+			annotation SummarizationSetBy = Automatic
+
+		partition 'localhost: postgres' = m
+			mode: import
+			source =
+					let
+					    Origen = PostgreSQL.Database("localhost", "postgres")
+					in
+					    Origen
+
+		annotation PBI_NavigationStepName = Navegación
+
+		annotation PBI_ResultType = Table
+
+	table 'urgencias demanda_horaria'
+		lineageTag: a4d60fad-7f30-45d3-8e83-624464925c36
+
+		column fecha_hora
+			dataType: dateTime
+			formatString: General Date
+			lineageTag: 4c8422a9-fe0a-413b-98f0-07e0ddc3f1bb
+			summarizeBy: none
+			sourceColumn: fecha_hora
+
+			variation Variation
+				isDefault
+				relationship: cab7ecbb-107f-43bc-8e28-8d01900674ca
+				defaultHierarchy: LocalDateTable_2a2387c6-0fb4-412b-8f4f-b6e06bf62bc6.'Jerarquía de fechas'
+
+			annotation SummarizationSetBy = Automatic
+
+		column demanda
+			dataType: int64
+			formatString: 0
+			lineageTag: 1ff98238-00e3-4604-866e-0b65e67ee2c9
+			summarizeBy: sum
+			sourceColumn: demanda
+
+			annotation SummarizationSetBy = Automatic
+
+		column hora
+			dataType: int64
+			formatString: 0
+			lineageTag: 80e1665a-7b3e-4dde-8c05-bf3eeccc4e82
+			summarizeBy: sum
+			sourceColumn: hora
+
+			annotation SummarizationSetBy = Automatic
+
+		column dia_semana
+			dataType: int64
+			formatString: 0
+			lineageTag: f805acac-20e0-489c-85b4-e6e0630cc744
+			summarizeBy: sum
+			sourceColumn: dia_semana
+
+			annotation SummarizationSetBy = Automatic
+
+		column mes
+			dataType: int64
+			formatString: 0
+			lineageTag: f1cff151-5183-4909-ad6f-52be391bd61e
+			summarizeBy: sum
+			sourceColumn: mes
+
+			annotation SummarizationSetBy = Automatic
+
+		column anio
+			dataType: int64
+			formatString: 0
+			lineageTag: 0870e24e-37c5-4221-889a-19a2297a5d18
+			summarizeBy: sum
+			sourceColumn: anio
+
+			annotation SummarizationSetBy = Automatic
+
+		column es_fin_semana
+			dataType: int64
+			formatString: 0
+			lineageTag: 91808180-892f-4f17-acb6-5738edad3b75
+			summarizeBy: sum
+			sourceColumn: es_fin_semana
+
+			annotation SummarizationSetBy = Automatic
+
+		partition 'urgencias demanda_horaria' = m
+			mode: import
+			source =
+					let
+					    Origen = PostgreSQL.Database("localhost:5432", "hun_analitica"),
+					    urgencias_demanda_horaria = Origen{[Schema="urgencias",Item="demanda_horaria"]}[Data]
+					in
+					    urgencias_demanda_horaria
+
+		annotation PBI_ResultType = Table
+
+	table 'urgencias episodios'
+		lineageTag: 315bd41c-e6f9-49ef-8778-bcd8172968c3
+
+		column episode_id
+			dataType: string
+			lineageTag: 13518189-24ea-4fc4-bbd9-12eb46a4c14b
+			summarizeBy: none
+			sourceColumn: episode_id
+
+			annotation SummarizationSetBy = Automatic
+
+		column visit_occurrence_id
+			dataType: int64
+			formatString: 0
+			lineageTag: ef82b078-7c51-4acf-9fdb-fad292883f2b
+			summarizeBy: sum
+			sourceColumn: visit_occurrence_id
+
+			annotation SummarizationSetBy = Automatic
+
+		column person_id
+			dataType: int64
+			formatString: 0
+			lineageTag: 9c0f3009-67d9-40dd-bddb-912d75099d09
+			summarizeBy: sum
+			sourceColumn: person_id
+
+			annotation SummarizationSetBy = Automatic
+
+		column episode_number
+			dataType: int64
+			formatString: 0
+			lineageTag: 69a75f41-ff43-47d7-9501-a3d374e2e093
+			summarizeBy: sum
+			sourceColumn: episode_number
+
+			annotation SummarizationSetBy = Automatic
+
+		column episode_start
+			dataType: dateTime
+			formatString: General Date
+			lineageTag: 578449dc-6445-4c29-9117-1460e1ac2501
+			summarizeBy: none
+			sourceColumn: episode_start
+
+			variation Variation
+				isDefault
+				relationship: c3036b00-d704-4dd5-905d-d3fdf3fbcb8d
+				defaultHierarchy: LocalDateTable_bbbdecec-c341-434f-8213-8223f4a94b49.'Jerarquía de fechas'
+
+			annotation SummarizationSetBy = Automatic
+
+		column episode_end
+			dataType: dateTime
+			formatString: General Date
+			lineageTag: 0d970b7c-e6af-4faa-a616-bfdaa0d83d0e
+			summarizeBy: none
+			sourceColumn: episode_end
+
+			variation Variation
+				isDefault
+				relationship: fc170b1c-78a6-4aac-be7a-eab9084e21dd
+				defaultHierarchy: LocalDateTable_ef7a436c-c3ef-4e37-b294-670422479322.'Jerarquía de fechas'
+
+			annotation SummarizationSetBy = Automatic
+
+		column documented_duration_min
+			dataType: double
+			lineageTag: 4fc9b86e-edf0-430a-b76f-487e716e7782
+			summarizeBy: sum
+			sourceColumn: documented_duration_min
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		column detail_count
+			dataType: int64
+			formatString: 0
+			lineageTag: 8155b8dc-0593-4949-825c-c1d99546832b
+			summarizeBy: sum
+			sourceColumn: detail_count
+
+			annotation SummarizationSetBy = Automatic
+
+		column positive_detail_count
+			dataType: int64
+			formatString: 0
+			lineageTag: a9ae08b7-0465-4a8c-90bb-5c583fb15c35
+			summarizeBy: sum
+			sourceColumn: positive_detail_count
+
+			annotation SummarizationSetBy = Automatic
+
+		column zero_detail_count
+			dataType: int64
+			formatString: 0
+			lineageTag: 83d6fae3-782f-4094-b484-541946cf87c2
+			summarizeBy: sum
+			sourceColumn: zero_detail_count
+
+			annotation SummarizationSetBy = Automatic
+
+		column has_emergency_detail
+			dataType: boolean
+			formatString: """TRUE"";""TRUE"";""FALSE"""
+			lineageTag: b1b81f68-852b-4057-8674-3749c3742ad4
+			summarizeBy: none
+			sourceColumn: has_emergency_detail
+
+			annotation SummarizationSetBy = Automatic
+
+		column has_diagnostic_detail
+			dataType: boolean
+			formatString: """TRUE"";""TRUE"";""FALSE"""
+			lineageTag: 140b47ef-b100-44d7-a857-aa27a86cb7ce
+			summarizeBy: none
+			sourceColumn: has_diagnostic_detail
+
+			annotation SummarizationSetBy = Automatic
+
+		column has_inpatient_detail
+			dataType: boolean
+			formatString: """TRUE"";""TRUE"";""FALSE"""
+			lineageTag: ee576e2f-e0a8-4f1c-ab89-e3fef93cfaa1
+			summarizeBy: none
+			sourceColumn: has_inpatient_detail
+
+			annotation SummarizationSetBy = Automatic
+
+		column has_rehabilitation_detail
+			dataType: boolean
+			formatString: """TRUE"";""TRUE"";""FALSE"""
+			lineageTag: 4a5e3f52-5137-4756-bab8-78b2d4eaa73d
+			summarizeBy: none
+			sourceColumn: has_rehabilitation_detail
+
+			annotation SummarizationSetBy = Automatic
+
+		column has_positive_duration
+			dataType: boolean
+			formatString: """TRUE"";""TRUE"";""FALSE"""
+			lineageTag: 7ae1c769-efe5-4d4f-9c58-01ae5b93c884
+			summarizeBy: none
+			sourceColumn: has_positive_duration
+
+			annotation SummarizationSetBy = Automatic
+
+		column is_zero_duration
+			dataType: boolean
+			formatString: """TRUE"";""TRUE"";""FALSE"""
+			lineageTag: 921e77ee-e2d1-4665-b550-a5bc6a36655b
+			summarizeBy: none
+			sourceColumn: is_zero_duration
+
+			annotation SummarizationSetBy = Automatic
+
+		column is_over_24h
+			dataType: boolean
+			formatString: """TRUE"";""TRUE"";""FALSE"""
+			lineageTag: 54c1d7c2-4f3a-4e57-ab86-f09042c665a8
+			summarizeBy: none
+			sourceColumn: is_over_24h
+
+			annotation SummarizationSetBy = Automatic
+
+		column is_over_48h
+			dataType: boolean
+			formatString: """TRUE"";""TRUE"";""FALSE"""
+			lineageTag: c7bed920-aff6-453f-bf8d-2ff6665e5a40
+			summarizeBy: none
+			sourceColumn: is_over_48h
+
+			annotation SummarizationSetBy = Automatic
+
+		column episode_gap_threshold_h
+			dataType: int64
+			formatString: 0
+			lineageTag: d4ccbfb8-36e2-47e2-b302-2a71c0d90736
+			summarizeBy: sum
+			sourceColumn: episode_gap_threshold_h
+
+			annotation SummarizationSetBy = Automatic
+
+		partition 'urgencias episodios' = m
+			mode: import
+			source =
+					let
+					    Origen = PostgreSQL.Database("localhost:5432", "hun_analitica"),
+					    urgencias_episodios = Origen{[Schema="urgencias",Item="episodios"]}[Data]
+					in
+					    urgencias_episodios
+
+		annotation PBI_ResultType = Table
+

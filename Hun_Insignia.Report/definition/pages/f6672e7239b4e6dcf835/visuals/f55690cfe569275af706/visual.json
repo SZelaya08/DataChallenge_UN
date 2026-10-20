@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "f55690cfe569275af706",
+  "position": {
+    "x": 30,
+    "y": 82,
+    "z": 4000,
+    "height": 50,
+    "width": 1820,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Cómo leerlo: barra azul = demanda promedio en esa hora o día; barra naranja = P90 (en 1 de cada 10 horas la demanda supera ese valor, es el escenario de pico para dimensionar personal). Día 1–7: falta confirmar si 1 = lunes. La tabla de la derecha da el detalle por hora y se puede ordenar por cualquier columna.",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

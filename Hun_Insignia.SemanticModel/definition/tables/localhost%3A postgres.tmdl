@@ -1,0 +1,55 @@
+table 'localhost: postgres'
+	lineageTag: 78f06582-0a7d-427d-b8db-4f651e5cac7e
+
+	column Name
+		dataType: string
+		lineageTag: 052406aa-b10d-4df2-9e43-145e199ce130
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: string
+		lineageTag: 00d14bc5-2d4f-4e3d-8219-74aa8298a81e
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+	column Schema
+		dataType: string
+		lineageTag: 00b2f7d9-43f3-4fb1-81e1-927cc84d4ca7
+		summarizeBy: none
+		sourceColumn: Schema
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: c3a0e6a7-7be1-439c-9e16-4e0f0fd42df5
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Kind
+		dataType: string
+		lineageTag: c620a3f8-213a-4868-b6f9-2212e8e11f73
+		summarizeBy: none
+		sourceColumn: Kind
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'localhost: postgres' = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost", "postgres")
+				in
+				    Origen
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

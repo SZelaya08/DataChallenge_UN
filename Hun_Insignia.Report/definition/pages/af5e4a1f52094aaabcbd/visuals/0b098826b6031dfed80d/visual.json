@@ -1,0 +1,109 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "0b098826b6031dfed80d",
+  "position": {
+    "x": 30,
+    "y": 315,
+    "z": 1000,
+    "height": 735,
+    "width": 1860,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "areaChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "urgencias demanda_horaria"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "fecha_hora"
+                        }
+                      },
+                      "Hierarchy": "Jerarquía de fechas"
+                    }
+                  },
+                  "Level": "Año"
+                }
+              },
+              "queryRef": "urgencias demanda_horaria.fecha_hora.Variation.Jerarquía de fechas.Año",
+              "nativeQueryRef": "fecha_hora Año",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "urgencias demanda_horaria"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "fecha_hora"
+                        }
+                      },
+                      "Hierarchy": "Jerarquía de fechas"
+                    }
+                  },
+                  "Level": "Mes"
+                }
+              },
+              "queryRef": "urgencias demanda_horaria.fecha_hora.Variation.Jerarquía de fechas.Mes",
+              "nativeQueryRef": "fecha_hora Mes",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias demanda_horaria"
+                    }
+                  },
+                  "Property": "Demanda total"
+                }
+              },
+              "queryRef": "urgencias demanda_horaria.Demanda total",
+              "nativeQueryRef": "Demanda total"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'¿Cómo cambia la demanda mes a mes?'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

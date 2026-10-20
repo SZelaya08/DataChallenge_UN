@@ -1,0 +1,47 @@
+{
+  "name": "HUN Insignia",
+  "dataColors": ["#0E7490", "#F59E0B", "#14B8A6", "#6366F1", "#E11D48", "#84CC16", "#0EA5E9", "#A855F7"],
+  "background": "#FFFFFF",
+  "foreground": "#1E293B",
+  "tableAccent": "#0E7490",
+  "good": "#14B8A6",
+  "neutral": "#F59E0B",
+  "bad": "#E11D48",
+  "textClasses": {
+    "callout": { "fontSize": 26, "fontFace": "Segoe UI Semibold", "color": "#0E7490" },
+    "title": { "fontSize": 13, "fontFace": "Segoe UI Semibold", "color": "#1E293B" },
+    "header": { "fontSize": 12, "fontFace": "Segoe UI Semibold", "color": "#1E293B" },
+    "label": { "fontSize": 10, "fontFace": "Segoe UI", "color": "#475569" }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{ "show": true, "color": { "solid": { "color": "#FFFFFF" } }, "transparency": 0 }],
+        "border": [{ "show": true, "color": { "solid": { "color": "#E2E8F0" } }, "radius": 14 }],
+        "dropShadow": [{ "show": true, "color": { "solid": { "color": "#0F172A" } }, "position": "Outer", "preset": "Custom", "shadowSpread": 0, "shadowBlur": 12, "angle": 90, "shadowDistance": 3, "transparency": 88 }],
+        "padding": [{ "top": 14, "bottom": 12, "left": 16, "right": 16 }],
+        "title": [{ "fontColor": { "solid": { "color": "#1E293B" } }, "fontSize": 13, "fontFamily": "Segoe UI Semibold" }],
+        "visualHeader": [{ "foreground": { "solid": { "color": "#64748B" } } }]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#EEF3F8" } }, "transparency": 0 }],
+        "outspace": [{ "color": { "solid": { "color": "#E2E8F0" } }, "transparency": 0 }]
+      }
+    },
+    "textbox": {
+      "*": {
+        "background": [{ "show": false }],
+        "border": [{ "show": false }],
+        "dropShadow": [{ "show": false }],
+        "padding": [{ "top": 4, "bottom": 4, "left": 4, "right": 4 }]
+      }
+    },
+    "cardVisual": {
+      "*": {
+        "background": [{ "show": true, "color": { "solid": { "color": "#FFFFFF" } }, "transparency": 0 }]
+      }
+    }
+  }
+}

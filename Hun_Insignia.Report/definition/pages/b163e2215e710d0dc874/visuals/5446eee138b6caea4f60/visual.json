@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "5446eee138b6caea4f60",
+  "position": {
+    "x": 30,
+    "y": 315,
+    "z": 1000,
+    "height": 735,
+    "width": 1240,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Modelo 1 REPORTADO"
+                    }
+                  },
+                  "Property": "variable"
+                }
+              },
+              "queryRef": "Modelo 1 REPORTADO.variable",
+              "nativeQueryRef": "variable",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Modelo 1 REPORTADO"
+                    }
+                  },
+                  "Property": "Importancia reportada"
+                }
+              },
+              "queryRef": "Modelo 1 REPORTADO.Importancia reportada",
+              "nativeQueryRef": "Importancia reportada"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Modelo 1 REPORTADO"
+                  }
+                },
+                "Property": "Importancia reportada"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'¿Qué variables pesaron más en el modelo 1? (importancia reportada)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

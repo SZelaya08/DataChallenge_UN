@@ -1,0 +1,26 @@
+model Model
+	culture: es-CO
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-CO
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["localhost: postgres","urgencias demanda_horaria","urgencias episodios"]
+
+annotation PBI_ProTooling = ["DevMode","TMDLView_Desktop"]
+
+ref table 'localhost: postgres'
+ref table 'urgencias demanda_horaria'
+ref table DateTableTemplate_a6b17a70-1871-4031-bf64-fc1ed4850c45
+ref table LocalDateTable_2a2387c6-0fb4-412b-8f4f-b6e06bf62bc6
+ref table 'urgencias episodios'
+ref table LocalDateTable_bbbdecec-c341-434f-8213-8223f4a94b49
+ref table LocalDateTable_ef7a436c-c3ef-4e37-b294-670422479322
+ref table 'Modelo 1 REPORTADO'
+
+ref cultureInfo es-CO
+

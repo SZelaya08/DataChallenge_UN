@@ -1,0 +1,104 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "73f1614d3320117fffde",
+  "position": {
+    "x": 30,
+    "y": 140,
+    "z": 0,
+    "height": 425,
+    "width": 1860,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias demanda_horaria"
+                    }
+                  },
+                  "Property": "hora"
+                }
+              },
+              "queryRef": "urgencias demanda_horaria.hora",
+              "nativeQueryRef": "hora",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias demanda_horaria"
+                    }
+                  },
+                  "Property": "Demanda promedio por hora"
+                }
+              },
+              "queryRef": "urgencias demanda_horaria.Demanda promedio por hora",
+              "nativeQueryRef": "Demanda promedio por hora"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias demanda_horaria"
+                    }
+                  },
+                  "Property": "Demanda P90 por hora"
+                }
+              },
+              "queryRef": "urgencias demanda_horaria.Demanda P90 por hora",
+              "nativeQueryRef": "Demanda P90 por hora"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "urgencias demanda_horaria"
+                  }
+                },
+                "Property": "Demanda promedio por hora"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'¿A qué hora del día se concentra la demanda?'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

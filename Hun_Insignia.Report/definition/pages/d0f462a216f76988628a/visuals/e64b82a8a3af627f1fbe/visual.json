@@ -1,0 +1,156 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "e64b82a8a3af627f1fbe",
+  "position": {
+    "x": 30,
+    "y": 315,
+    "z": 1000,
+    "height": 735,
+    "width": 920,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "% con detalle de urgencias"
+                }
+              },
+              "queryRef": "urgencias episodios.% con detalle de urgencias",
+              "nativeQueryRef": "% con detalle de urgencias"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "% con detalle diagnóstico"
+                }
+              },
+              "queryRef": "urgencias episodios.% con detalle diagnóstico",
+              "nativeQueryRef": "% con detalle diagnóstico"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "% con hospitalización"
+                }
+              },
+              "queryRef": "urgencias episodios.% con hospitalización",
+              "nativeQueryRef": "% con hospitalización"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "% con rehabilitación"
+                }
+              },
+              "queryRef": "urgencias episodios.% con rehabilitación",
+              "nativeQueryRef": "% con rehabilitación"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "% más de 24 h"
+                }
+              },
+              "queryRef": "urgencias episodios.% más de 24 h",
+              "nativeQueryRef": "% más de 24 h"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "% más de 48 h"
+                }
+              },
+              "queryRef": "urgencias episodios.% más de 48 h",
+              "nativeQueryRef": "% más de 48 h"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "urgencias episodios"
+                  }
+                },
+                "Property": "% con detalle de urgencias"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'¿Qué queda registrado en cada episodio? (% del total)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "3724d1a172cb26210648",
+  "position": {
+    "x": 950,
+    "y": 315,
+    "z": 2000,
+    "height": 735,
+    "width": 940,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "urgencias episodios"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "episode_start"
+                        }
+                      },
+                      "Hierarchy": "Jerarquía de fechas"
+                    }
+                  },
+                  "Level": "Año"
+                }
+              },
+              "queryRef": "urgencias episodios.episode_start.Variation.Jerarquía de fechas.Año",
+              "nativeQueryRef": "episode_start Año",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "urgencias episodios"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "episode_start"
+                        }
+                      },
+                      "Hierarchy": "Jerarquía de fechas"
+                    }
+                  },
+                  "Level": "Mes"
+                }
+              },
+              "queryRef": "urgencias episodios.episode_start.Variation.Jerarquía de fechas.Mes",
+              "nativeQueryRef": "episode_start Mes",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "Episodios"
+                }
+              },
+              "queryRef": "urgencias episodios.Episodios",
+              "nativeQueryRef": "Episodios"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'¿Cuántos episodios empiezan cada mes?'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

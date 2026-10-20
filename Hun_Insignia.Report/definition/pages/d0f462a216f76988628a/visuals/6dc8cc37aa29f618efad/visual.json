@@ -1,0 +1,112 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "6dc8cc37aa29f618efad",
+  "position": {
+    "x": 30,
+    "y": 140,
+    "z": 0,
+    "height": 160,
+    "width": 1860,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "Visitas"
+                }
+              },
+              "queryRef": "urgencias episodios.Visitas",
+              "nativeQueryRef": "Visitas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "Episodios por paciente"
+                }
+              },
+              "queryRef": "urgencias episodios.Episodios por paciente",
+              "nativeQueryRef": "Episodios por paciente"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "Duración promedio (min)"
+                }
+              },
+              "queryRef": "urgencias episodios.Duración promedio (min)",
+              "nativeQueryRef": "Duración promedio (min)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "% duración cero"
+                }
+              },
+              "queryRef": "urgencias episodios.% duración cero",
+              "nativeQueryRef": "% duración cero"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "urgencias episodios"
+                    }
+                  },
+                  "Property": "Detalles por episodio"
+                }
+              },
+              "queryRef": "urgencias episodios.Detalles por episodio",
+              "nativeQueryRef": "Detalles por episodio"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "urgencias episodios"
+                  }
+                },
+                "Property": "Visitas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
